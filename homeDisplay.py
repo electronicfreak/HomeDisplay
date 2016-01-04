@@ -38,7 +38,7 @@ def initGUI(bg=(0,0,0),dim=(1024,600)):
 		print("[initGUI]")
 	global d
 	d = p.display.set_mode(dim)
-	p.mouse.set_visible(False)
+	p.mouse.set_visible(True)
 	if isinstance(bg, str):
 		d.fill((0,0,0))
 		bg_img = p.image.load(os.path.join('img', bg))
@@ -53,17 +53,25 @@ def initGUI(bg=(0,0,0),dim=(1024,600)):
 def makeButton(button_map):
 	if debug:
 		print("[makeButton]")
-	try:
+	#try:
 		global d
 		for i in button_map:
+			if debug:
+				print(i)
+			
 			if "img" in i.keys():
-				img = g.image.load(os.path.join('img', button_map["img"]))
-				d.blit(img,button_map["pos"])
+				if debug:
+					print("img:"+i["img"]+" - "+str(i["pos"]))
+				img = p.image.load(os.path.join('img', i["img"]))
+				d.blit(img,i["pos"])
 			else:
-				p.draw.rect(d,buttom_map["col"],p.Rect(buttom_map["pos"],buttom_map["dia"]),1)
-				d.display.flip()
+				if debug:
+					print("btn")			
+				p.draw.rect(d,i["col"],p.Rect(i["pos"],i["dia"]))
+				
+			p.display.flip()
 		return True
-	except:
+	#except:
 		return False
 
 # links eintragen
@@ -100,23 +108,32 @@ def checkEvent(onlyEv=False):
 		print("[checkEvent]")
 	global link_map
 	#warte auf mouseup
+	#try:
 	for ev in p.event.get(6):
-		#hole coords
-		pos = ev.pos
-		
-		if onlyEv:
-			return True
-	
-		#vergleiche mit linkmap
-		for ln in link_map:
-		#fuehle ersten treffer aus
-			if ln["pos1"][0] <= pos[0] and ln["pos2"][0] >= pos[0] and ln["pos1"][1] <= pos[1] and ln["pos2"][1] >= pos[1]:
-				if "exec" in ln.keys():
-					call(ln["exec"])
-				if "screen" in ln.keys():
-					updateScreen(ln["screen"])
-				#verwerfe rest
+			#hole coords
+			pos = ev.pos
+			
+			if onlyEv:
 				return True
+		
+			#vergleiche mit linkmap
+			for ln in link_map:
+			#fuehle ersten treffer aus
+				if ln["pos1"][0] <= pos[0] and ln["pos2"][0] >= pos[0] and ln["pos1"][1] <= pos[1] and ln["pos2"][1] >= pos[1]:
+					if debug:
+						print(pos)
+						print(ln)
+						#exit()
+
+					if "exec" in ln.keys():
+						call(os.path.join('bin',ln["exec"]))
+						
+					if "screen" in ln.keys():
+						updateScreen(ln["screen"])
+					#verwerfe rest
+					return True
+	#except:
+	#	pass
 	return False
 
 # screen konfiguration aendern
