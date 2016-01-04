@@ -23,6 +23,8 @@ http://www.pygame.org/docs/ref/display.html#pygame.display.update
 http://www.bananapi-kaufen.de/gpios-steuern-mit-wiringpi/
 http://hardware-libre.fr/2014/07/banana-pi-gpio-now-supported/
 
+http://markamc.cybaman.net/?p=168
+
 APT: python python-pip gcc
 
 ir fernbedienung
