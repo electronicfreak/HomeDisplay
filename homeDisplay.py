@@ -108,8 +108,8 @@ def checkEvent(onlyEv=False):
 		print("[checkEvent]")
 	global link_map
 	#warte auf mouseup
-	#try:
-	for ev in p.event.get(6):
+	try:
+		for ev in p.event.get(6):
 			#hole coords
 			pos = ev.pos
 			
@@ -126,14 +126,14 @@ def checkEvent(onlyEv=False):
 						#exit()
 
 					if "exec" in ln.keys():
-						call(os.path.join('bin',ln["exec"]))
+						call('bin/'+ln["exec"])
 						
 					if "screen" in ln.keys():
 						updateScreen(ln["screen"])
 					#verwerfe rest
 					return True
-	#except:
-	#	pass
+	except:
+		pass
 	return False
 
 # screen konfiguration aendern

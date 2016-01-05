@@ -1,3 +1,3 @@
 #! /bin/bash
 
-mpc voliume +5
+mpc volume +5
