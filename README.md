@@ -65,5 +65,11 @@ in /etc/modules unten hinzufügen
 	ft5x_ts
 
 python installieren und alles was man so braucht
-	apt-get install python python-pip gcc
+	apt-get install python python-pip gcc evtest
+	
+mit evtest den ft5 treiber aufrufen und testen 
+	evtest
+	
+homedisplay importieren
+	git clone https://github.com/electronicfreak/HomeDisplay.git
 	

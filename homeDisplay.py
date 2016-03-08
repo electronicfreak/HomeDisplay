@@ -183,9 +183,10 @@ def openSocket(dummy,egal):
 			conn.sendall("-1")
 		conn.close()
 	
-thread.start_new_thread(openSocket,("bla","Blub"))
+# MAIN ###########################################
 switchMonitor(True)
 updateScreen()
+thread.start_new_thread(openSocket,(0,0))
 t = 0
 while True:
 	if t < c.screensaver:
