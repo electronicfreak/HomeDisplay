@@ -161,7 +161,7 @@ def updateScreen(bmIndex=""):
 	
 # socket anbieten
 # untested
-def openSocket():
+def openSocket(dummy,egal):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	#socket.setdefaulttimeout(5.0)
 	s.bind((, c.cPORT))
@@ -183,6 +183,7 @@ def openSocket():
 			conn.sendall("-1")
 		conn.close()
 	
+thread.start_new_thread(openSocket,("bla","Blub"))
 switchMonitor(True)
 updateScreen()
 t = 0
