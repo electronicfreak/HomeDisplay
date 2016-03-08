@@ -4,16 +4,20 @@ import RPi.GPIO as g
 import urllib2 as u
 import pygame as p
 import config as c
-import os
+import os,thread,socket,json
 from subprocess import call
 from time import sleep
 
 debug = True
+btnMap = c.btnMap
 
 d = False #display handler
+cur_screen = "main"
 
 link_map = []
 # ({pos1:{x,y},pos2:(x,y),exec:"exec"},...)
+var_map = {}
+#
 
 # schaltet monitor ein oder aus
 # untested
@@ -136,17 +140,41 @@ def checkEvent(onlyEv=False):
 		pass
 	return False
 
+# socket anbieten
+# untested
+def openSocket():
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	#socket.setdefaulttimeout(5.0)
+	s.bind((, c.cPORT))
+	s.listen(1)
+	while True:
+		conn, addr = s.accept()
+		data = conn.recv(1024)
+		
+		d = json.loads(data)
+		k = d.keys()
+		if 'var' in k and 'text' in k:
+			
+			
+				
+			conn.sendall("0")
+		else:
+			conn.sendall("-1")
+		conn.close()
+	
 # screen konfiguration aendern
 # untested
-def updateScreen(bmIndex):
+def updateScreen(bmIndex=""):
+	if not bmIndex == "":
+		cur_screen = bmIndex
 	if debug:
 		print("[updateScreen]")
 	initGUI(c.cBACKGROUND)
-	makeButton(c.btnMap[bmIndex])
-	makeLinks(c.btnMap[bmIndex])
+	makeButton(btnMap[cur_screen])
+	makeLinks(btnMap[cur_screen])
 	
 switchMonitor(True)
-updateScreen("main")
+updateScreen()
 t = 0
 while True:
 	if t < c.screensaver:
@@ -163,4 +191,4 @@ while True:
 		t = 0
 	sleep(0.2)
 	
-	# ################################################
+# ################################################
