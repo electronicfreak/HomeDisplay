@@ -24,6 +24,7 @@ http://www.bananapi-kaufen.de/gpios-steuern-mit-wiringpi/
 http://hardware-libre.fr/2014/07/banana-pi-gpio-now-supported/
 
 http://markamc.cybaman.net/?p=168
+http://wiki.lemaker.org/BananaPro/Pi:LCD_Module
 
 APT: python python-pip gcc
 
@@ -42,7 +43,7 @@ configurieren
 	
 git installieren
 	apt-get update
-	apt-get install git
+	apt-get install git mc nano htop screen watch
 	
 display anklemmen
 
@@ -52,6 +53,17 @@ fex daten holen
 	
 boot modden
 	mount /dev/mmcblk0p1 /mnt
-	cp banana_pro_Xlcd.bin /mnt/script.bin
+	cp banana_pi_7lcd.bin /mnt/script.bin
 	sync
 	umount /mnt
+	reboot
+	
+touchscreen treiber starten
+	modprobe ft5x_ts
+	
+in /etc/modules unten hinzufügen
+	ft5x_ts
+
+python installieren und alles was man so braucht
+	apt-get install python python-pip gcc
+	
