@@ -28,3 +28,30 @@ http://markamc.cybaman.net/?p=168
 APT: python python-pip gcc
 
 ir fernbedienung
+
+
+anleitung
+bananian installieren
+user root pw pi
+
+
+configurieren
+	bananian-config
+	bananian-update
+	reboot
+	
+git installieren
+	apt-get update
+	apt-get install git
+	
+display anklemmen
+
+fex daten holen
+	git clone https://github.com/LeMaker/fex_configuration.git
+	cd fex_configuration/bin
+	
+boot modden
+	mount /dev/mmcblk0p1 /mnt
+	cp banana_pro_Xlcd.bin /mnt/script.bin
+	sync
+	umount /mnt
