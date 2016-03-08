@@ -62,7 +62,12 @@ def makeButton(button_map):
 		for i in button_map:
 			if debug:
 				print(i)
-			
+				
+			if "var" in i.keys() and i["var"] in var_map:
+				h = i["var"]
+				for j in var_map[h].keys():
+					i[j] = var_map[h][j]
+
 			if "img" in i.keys():
 				if debug:
 					print("img:"+i["img"]+" - "+str(i["pos"]))
@@ -105,6 +110,7 @@ def makeLinks(button_map):
 	except:
 		return False
 
+		
 # prueft auf maus aktivitaet
 # untested
 def checkEvent(onlyEv=False):
@@ -139,7 +145,20 @@ def checkEvent(onlyEv=False):
 	except:
 		pass
 	return False
-
+	
+# screen konfiguration aendern
+# untested
+def updateScreen(bmIndex=""):
+	if not bmIndex == "":
+		cur_screen = bmIndex
+		
+	if debug:
+		print("[updateScreen]")
+		
+	initGUI(c.cBACKGROUND)
+	makeButton(btnMap[cur_screen])
+	makeLinks(btnMap[cur_screen])
+	
 # socket anbieten
 # untested
 def openSocket():
@@ -153,25 +172,16 @@ def openSocket():
 		
 		d = json.loads(data)
 		k = d.keys()
-		if 'var' in k and 'text' in k:
-			
-			
-				
+		if 'var' in k:
+			for j in k.keys():
+				if not j == "var":
+					var_map[j] = k[j]
+					
 			conn.sendall("0")
+			updateScreen()
 		else:
 			conn.sendall("-1")
 		conn.close()
-	
-# screen konfiguration aendern
-# untested
-def updateScreen(bmIndex=""):
-	if not bmIndex == "":
-		cur_screen = bmIndex
-	if debug:
-		print("[updateScreen]")
-	initGUI(c.cBACKGROUND)
-	makeButton(btnMap[cur_screen])
-	makeLinks(btnMap[cur_screen])
 	
 switchMonitor(True)
 updateScreen()
