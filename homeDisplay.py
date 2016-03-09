@@ -73,10 +73,16 @@ def makeButton(button_map):
 					print("img:"+i["img"]+" - "+str(i["pos"]))
 				img = p.image.load(os.path.join('img', i["img"]))
 				d.blit(img,i["pos"])
-			elif "col" in i.keys():
+			elif "text" in i.keys():
 				if debug:
-					print("btn")			
-				p.draw.rect(d,i["col"],p.Rect(i["pos"],i["dia"]))
+					print("text")
+				ren = p.render(i["text"], 0, i["col"])
+				screen.blit(ren, i["pos"])
+			else:
+                                if debug:
+                                        print("btn")              
+                                p.draw.rect(d,i["col"],p.Rect(i["pos"],i["dia"]))
+
 				
 			p.display.flip()
 		return True
