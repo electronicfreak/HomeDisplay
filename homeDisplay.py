@@ -174,7 +174,7 @@ def updateScreen(bmIndex=""):
 # untested
 def openSocket(dummy,egal):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	#socket.setdefaulttimeout(5.0)
+	socket.setdefaulttimeout(5.0)
 	s.bind(("", c.cPORT))
 	s.listen(1)
 	while True:
