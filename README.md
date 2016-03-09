@@ -41,7 +41,7 @@ configurieren
 	bananian-config
 	bananian-update
 	reboot
-	
+
 git installieren
 	apt-get update
 	apt-get install git mc nano htop screen watch
