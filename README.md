@@ -14,24 +14,17 @@ Seiten
 		timer
 	notizzettel
 		freizeichnen und speichern
-		
+	446 Mhz sender
 
 http://jeremyblythe.blogspot.de/2014/09/raspberry-pi-pygame-ui-basics.html
-
-http://jeremyblythe.blogspot.de/2014/09/raspberry-pi-pygame-ui-basics.html
-http://www.pygame.org/docs/ref/display.html#pygame.display.update
-http://www.bananapi-kaufen.de/gpios-steuern-mit-wiringpi/
-http://hardware-libre.fr/2014/07/banana-pi-gpio-now-supported/
 
 http://markamc.cybaman.net/?p=168
-http://wiki.lemaker.org/BananaPro/Pi:LCD_Module
 https://www.theragnarbay.org/banana-pi-fernbedienung/
 
-APT: python python-pip gcc
 
 ir fernbedienung
-
-
+446 Fernbedienung
+------------------------------------------------------------------
 anleitung
 bananian installieren
 user root pw pi
@@ -74,11 +67,14 @@ mit evtest den ft5 treiber aufrufen und testen
 homedisplay importieren
 	git clone https://github.com/electronicfreak/HomeDisplay.git
 	
-git clone https://github.com/LeMaker/RPi.GPIO_BP -b bananapi
-apt-get update
-apt-get install python-dev
-cd /RPi.GPIO_BP
-python setup.py install                 
-reboot
+GPIO hinzufgen
+	git clone https://github.com/LeMaker/RPi.GPIO_BP -b bananapi
+	apt-get update
+	apt-get install python-dev
+	cd RPi.GPIO_BP
+	python setup.py install                 
+	reboot
 
-apt-get install python-pygame
+PyGame installieren
+	apt-get install python-pygame
+	
