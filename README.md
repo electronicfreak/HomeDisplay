@@ -25,6 +25,7 @@ http://hardware-libre.fr/2014/07/banana-pi-gpio-now-supported/
 
 http://markamc.cybaman.net/?p=168
 http://wiki.lemaker.org/BananaPro/Pi:LCD_Module
+https://www.theragnarbay.org/banana-pi-fernbedienung/
 
 APT: python python-pip gcc
 
