@@ -180,7 +180,9 @@ def openSocket(dummy,egal):
 	while True:
 		conn, addr = s.accept()
 		data = conn.recv(1024)
-		print(data)
+		if debug:
+			print("Incoming Data:")
+			print(data)
 		d = json.loads(data)
 		k = d.keys()
 		if 'var' in k:
