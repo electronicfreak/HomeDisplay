@@ -74,3 +74,11 @@ mit evtest den ft5 treiber aufrufen und testen
 homedisplay importieren
 	git clone https://github.com/electronicfreak/HomeDisplay.git
 	
+git clone https://github.com/LeMaker/RPi.GPIO_BP -b bananapi
+apt-get update
+apt-get install python-dev
+cd /RPi.GPIO_BP
+python setup.py install                 
+reboot
+
+apt-get install python-pygame
