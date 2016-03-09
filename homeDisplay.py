@@ -57,6 +57,9 @@ def initGUI(bg=(0,0,0),dim=(1024,600)):
 def makeButton(button_map):
 	if debug:
 		print("[makeButton]")
+	if not p.font.get_init():
+		p.font.init()
+
 	#try:
 		global d
 		for i in button_map:
@@ -76,8 +79,9 @@ def makeButton(button_map):
 			elif "text" in i.keys():
 				if debug:
 					print("text")
-				ren = p.render(i["text"], 0, i["col"])
-				screen.blit(ren, i["pos"])
+				font = p.font.Font(None, 30)
+				ren = font.render(i["text"], 0, i["col"])
+				d.blit(ren, i["pos"])
 			else:
                                 if debug:
                                         print("btn")              
@@ -176,7 +180,7 @@ def openSocket(dummy,egal):
 	while True:
 		conn, addr = s.accept()
 		data = conn.recv(1024)
-		
+		print(data)
 		d = json.loads(data)
 		k = d.keys()
 		if 'var' in k:
@@ -191,6 +195,8 @@ def openSocket(dummy,egal):
 		conn.close()
 	
 # MAIN ###########################################
+
+
 switchMonitor(True)
 updateScreen()
 thread.start_new_thread(openSocket,(0,0))

@@ -15,7 +15,7 @@ btnMap['main'] = (
 	{"pos":(125,260),"dia":(200,75),"img":"btn_music_volup.png","exec":"music_volup.sh"},
 	{"pos":(125,340),"dia":(200,75),"img":"btn_music_voldown.png","exec":"music_voldwn.sh"},
 	{"pos":(0,550),"dia":(50,50),"img":"btn_exit.png","screen":"exit"},
-	{"pos":(50,580),"dia":(750.20),"var":"rss","text":""}
+	{"pos":(75,580),"dia":(750.20),"var":"rss","text":"BLA","col":(255,255,255)}
 )
 btnMap['exit'] = (
 	{"pos":(100,100),"dia":(800,400),"col":(255,128,128,128)},
