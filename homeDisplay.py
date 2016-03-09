@@ -73,7 +73,7 @@ def makeButton(button_map):
 					print("img:"+i["img"]+" - "+str(i["pos"]))
 				img = p.image.load(os.path.join('img', i["img"]))
 				d.blit(img,i["pos"])
-			else:
+			elif "col" in i.keys():
 				if debug:
 					print("btn")			
 				p.draw.rect(d,i["col"],p.Rect(i["pos"],i["dia"]))
@@ -149,6 +149,7 @@ def checkEvent(onlyEv=False):
 # screen konfiguration aendern
 # untested
 def updateScreen(bmIndex=""):
+	global cur_screen
 	if not bmIndex == "":
 		cur_screen = bmIndex
 		
@@ -164,7 +165,7 @@ def updateScreen(bmIndex=""):
 def openSocket(dummy,egal):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	#socket.setdefaulttimeout(5.0)
-	s.bind((, c.cPORT))
+	s.bind(("", c.cPORT))
 	s.listen(1)
 	while True:
 		conn, addr = s.accept()
