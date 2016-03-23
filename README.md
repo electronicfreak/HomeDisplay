@@ -20,7 +20,8 @@ http://jeremyblythe.blogspot.de/2014/09/raspberry-pi-pygame-ui-basics.html
 
 http://markamc.cybaman.net/?p=168
 https://www.theragnarbay.org/banana-pi-fernbedienung/
-
+https://pypi.python.org/pypi/paho-mqtt/1.1
+http://mosquitto.org/download/
 
 ir fernbedienung
 446 Fernbedienung
@@ -78,3 +79,6 @@ GPIO hinzufgen
 PyGame installieren
 	apt-get install python-pygame
 	
+mqtt server???
+node-red???
+
