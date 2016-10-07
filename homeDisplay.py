@@ -54,6 +54,16 @@ def initGUI(bg=(0,0,0),dim=(1024,600)):
 	p.display.flip()
 	return d
 	
+# variablen aktualisieren die bei makeVar erledigt wurden
+# TODO
+def updateVar():
+	pass
+	
+# variablen die durch eingang gefüttert werden
+# TODO
+def makeVariable(button_map):
+	pass
+	
 # button malen	
 # untested
 def makeButton(button_map):
