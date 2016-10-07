@@ -31,7 +31,8 @@ btnMap['exit'] = (
 
 # lichtsteuerung
 btnMap['light'] = (
-	{"pos":(0,0),"dia":(70,100),"img":"menu_header.png","screen":"main"}
+	{"pos":(0,0),"dia":(70,100),"img":"menu_header.png","screen":"main"},
+	{"pos":(125,100),"dia":(50,50),"mqttt":"livingroom/light/1","mqttp":"ON"}
 )
 
 # infrarot fernbedienung

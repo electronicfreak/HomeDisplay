@@ -195,6 +195,9 @@ def openSocket(dummy,egal):
 		else:
 			conn.sendall("-1")
 		conn.close()
+
+def sendMqtt(topic,payload):
+	pass
 	
 # MAIN ###########################################
 
