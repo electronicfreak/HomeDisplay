@@ -8,6 +8,8 @@ import os,thread,socket,json
 from subprocess import call
 from time import sleep
 
+import paho.mqtt.publish as mospub
+
 debug = True
 btnMap = c.btnMap
 
@@ -112,6 +114,9 @@ def makeLinks(button_map):
 					elem["exec"] = i["exec"]
 				if "screen" in i.keys():
 					elem["screen"] = i["screen"]
+				if "mqttt" in i.keys():
+					elem["mqttt"] = i["mqttt"]
+					elem["mqttp"] = i["mqttp"]
 				link_map.append(elem)
 		
 		if debug:
@@ -150,6 +155,9 @@ def checkEvent(onlyEv=False):
 						
 					if "screen" in ln.keys():
 						updateScreen(ln["screen"])
+						
+					if "mqttt" in ln.keys():
+						mospub.single(ln["mqttt"], payload=ln["mqttp"], hostname=c.mSERVER)
 					#verwerfe rest
 					return True
 	except:
@@ -169,6 +177,7 @@ def updateScreen(bmIndex=""):
 	initGUI(c.cBACKGROUND)
 	makeButton(btnMap[cur_screen])
 	makeLinks(btnMap[cur_screen])
+	makeVar(btnMap[cur_screen])
 	
 # socket anbieten
 # untested
@@ -195,9 +204,6 @@ def openSocket(dummy,egal):
 		else:
 			conn.sendall("-1")
 		conn.close()
-
-def sendMqtt(topic,payload):
-	pass
 	
 # MAIN ###########################################
 

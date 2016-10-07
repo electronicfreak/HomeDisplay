@@ -6,6 +6,8 @@ cBUTTON 	= (0,0,0)
 cPORT 		= 5679
 screensaver = 5 * 30
 
+mSERVER		= "192.168.2.103"
+
 # ({pos:(x,y),dia:(w,h),col:(R,G,B),text:"text",img:"path",exec:""},...)
 btnMap = {}
 
